@@ -15,12 +15,21 @@ class App extends Component {
         dispatch(fetchBlockInfo());
     }
 
+    renderPayload() {
+        if (this.props.payload) {
+            if (this.props.payload.loading) {
+                return <Text>Loading...</Text>;
+            } else {
+                return <Text>{this.props.payload}</Text>;
+            }
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <Button title={'Get Most Recent Block Info'} onPress={() => this.fetchPayload()} style={styles.button} />
-                {}
-                <Text>{this.state.payload}</Text>
+                {this.renderPayload()}
             </View>
         );
     }
