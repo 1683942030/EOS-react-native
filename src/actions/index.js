@@ -6,15 +6,19 @@ export const fetchBlockInfoFailure = error => ({ type: types.FETCH_BLOCK_INFO_FA
 
 export function fetchBlockInfo() {
     return dispatch => {
-        dispatch(fetchBlockInfo());
+        dispatch(fetchBlockInfoBegin());
         return fetch('testnet1.eos.io/v1/chain/get_info')
             .then(handleErrors)
             .then(result => result.json())
             .then(json => {
+                console.log(json);
                 dispatch(fetchBlockInfoSuccess(json));
                 return json;
             })
-            .catch(error => dispatch(fetchBlockInfoFailure(error)));
+            .catch(error => {
+                console.log(error);
+                dispatch(fetchBlockInfoFailure(error));
+            });
     };
 }
 

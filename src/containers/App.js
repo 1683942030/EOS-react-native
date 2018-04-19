@@ -1,26 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import ReactNative, { Platform, StyleSheet, Text, View, Button } from 'react-native';
 import { fetchBlockInfo } from '../actions';
 
-class App extends Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
             payload: ''
         };
     }
 
     fetchPayload() {
-        dispatch(fetchBlockInfo());
+        this.props.store.dispatch(fetchBlockInfo());
     }
 
     renderPayload() {
         if (this.props.payload) {
             if (this.props.payload.loading) {
                 return <Text>Loading...</Text>;
-            } else {
-                return <Text>{this.props.payload}</Text>;
+            } 
+            else if (this.props.payload.error) {
+                return <Text>{this.props.payload.error.toString()}</Text>;
+            }
+            else {
+                return <Text>Its alive Jim</Text> 
             }
         }
     }
@@ -28,7 +33,7 @@ class App extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Button title={'Get Most Recent Block Info'} onPress={() => this.fetchPayload()} style={styles.button} />
+                <Button title={'Get Most Recent Block Info'} onPress={() => this.props.getBlockInfo()} style={styles.button} />
                 {this.renderPayload()}
             </View>
         );
@@ -37,11 +42,16 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        payload: state.payload
+        payload: state.blockInfo
     };
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+    return {
+        getBlockInfo: () => dispatch(fetchBlockInfo())
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 const styles = StyleSheet.create({
     container: {

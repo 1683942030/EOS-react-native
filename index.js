@@ -1,4 +1,5 @@
-import { AppRegistry } from 'react-native';
+import ReactNative, { AppRegistry } from 'react-native';
+import React from 'react';
 import { Provider } from 'react-redux';
 import App from './src/containers/App';
 import configureStore from './src/configureStore';
@@ -11,4 +12,4 @@ const EOS_react_native = () => (
     </Provider>
 );
 
-AppRegistry.registerComponent('EOS_react_native', () => App);
+AppRegistry.registerComponent('EOS_react_native', () => EOS_react_native);
