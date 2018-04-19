@@ -10,7 +10,6 @@ const initialState = {
     recent_slots: null,
     participation_rate: null,
     loading: false,
-    items: null
 };
 
 export default function blockInfo(state = initialState, action) {
@@ -31,6 +30,6 @@ export default function blockInfo(state = initialState, action) {
                 ...action.payload
             };
         default:
-            return state;
+            return null;
     }
 }

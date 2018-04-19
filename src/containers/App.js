@@ -25,7 +25,18 @@ class App extends React.Component {
                 return <Text>{this.props.payload.error.toString()}</Text>;
             }
             else {
-                return <Text>Its alive Jim</Text> 
+                return (
+                    <View>
+                        <Text>this.props.payload.server_version</Text>
+                        <Text>this.props.payload.head_block_num</Text> 
+                        <Text>this.props.payload.last_irreversible_block_num</Text> 
+                        <Text>this.props.payload.head_block_id</Text> 
+                        <Text>this.props.payload.head_block_time</Text> 
+                        <Text>this.props.payload.head_block_producer</Text> 
+                        <Text>this.props.payload.recent_slots</Text> 
+                        <Text>this.props.payload.participation_rate</Text> 
+                    </View>
+                )
             }
         }
     }
