@@ -27,14 +27,14 @@ class App extends React.Component {
             else {
                 return (
                     <View>
-                        <Text>this.props.payload.server_version</Text>
-                        <Text>this.props.payload.head_block_num</Text> 
-                        <Text>this.props.payload.last_irreversible_block_num</Text> 
-                        <Text>this.props.payload.head_block_id</Text> 
-                        <Text>this.props.payload.head_block_time</Text> 
-                        <Text>this.props.payload.head_block_producer</Text> 
-                        <Text>this.props.payload.recent_slots</Text> 
-                        <Text>this.props.payload.participation_rate</Text> 
+                        <Text>server_version {this.props.payload.server_version}</Text>
+                        <Text>head_block_num {this.props.payload.head_block_num}</Text> 
+                        <Text>last_irreversible_block_num {this.props.payload.last_irreversible_block_num}</Text> 
+                        <Text>head_block_id {this.props.payload.head_block_id}</Text> 
+                        <Text>head_block_time {this.props.payload.head_block_time}</Text> 
+                        <Text>head_block_producer {this.props.payload.head_block_producer}</Text> 
+                        <Text>recent_slots {this.props.payload.recent_slots}</Text> 
+                        <Text>participation_rate {this.props.payload.participation_rate}</Text> 
                     </View>
                 )
             }
