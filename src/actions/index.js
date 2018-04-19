@@ -7,7 +7,8 @@ export const fetchBlockInfoFailure = error => ({ type: types.FETCH_BLOCK_INFO_FA
 export function fetchBlockInfo() {
     return dispatch => {
         dispatch(fetchBlockInfoBegin());
-        return fetch('testnet1.eos.io/v1/chain/get_info')
+        //iOS doesn't allow http by default. Let me know if you want me to enable that, it's a quick fix
+        return fetch('https://testnet1.eos.io/v1/chain/get_info')
             .then(handleErrors)
             .then(result => result.json())
             .then(json => {
